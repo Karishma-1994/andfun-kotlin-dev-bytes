@@ -43,7 +43,7 @@ import java.io.IOException
  */
 class DevByteViewModel(application: Application) : AndroidViewModel(application) {
 
-private val viewModelJob= SupervisorJob()
+    private val viewModelJob = SupervisorJob()
 
     private val viewModelScope = CoroutineScope(viewModelJob + Dispatchers.Main)
 
@@ -55,6 +55,7 @@ private val viewModelJob= SupervisorJob()
             videosRepository.refreshVideos()
         }
     }
+
     val playlist = videosRepository.video
 
     override fun onCleared() {
@@ -71,8 +72,5 @@ private val viewModelJob= SupervisorJob()
             throw IllegalArgumentException("Unable to construct viewmodel")
         }
     }
-
-
-
-    }
+}
 
