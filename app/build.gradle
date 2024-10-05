@@ -18,6 +18,7 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-kapt'
+
 apply plugin: "androidx.navigation.safeargs"
 apply plugin: 'kotlin-parcelize'
 
@@ -26,7 +27,7 @@ android {
     defaultConfig {
         applicationId "com.example.android.devbyteviewer"
         minSdkVersion 21
-        targetSdkVersion 34
+        targetSdkVersion 35
         versionCode 1
         versionName "1.0"
         multiDexEnabled true
@@ -61,7 +62,7 @@ dependencies {
 
     // Support libraries
     implementation "androidx.appcompat:appcompat:$version_appcompat"
-    implementation "androidx.fragment:fragment:$version_fragment"
+    implementation "androidx.fragment:fragment-ktx:$version_fragment"
     implementation "androidx.constraintlayout:constraintlayout:$version_constraint_layout"
 
     // Android KTX
@@ -106,6 +107,4 @@ dependencies {
 
     // WorkManager
     implementation "androidx.work:work-runtime-ktx:$version_work"
-    implementation "android.arch.work:work-runtime-ktx:$version_work"
-    
 }

@@ -19,7 +19,9 @@ package com.example.android.devbyteviewer.repository
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.map
 import com.example.android.devbyteviewer.database.VideosDatabase
+import com.example.android.devbyteviewer.database.asDomainModel
 import com.example.android.devbyteviewer.domain.Video
 import com.example.android.devbyteviewer.network.Network
 import com.example.android.devbyteviewer.network.asDatabaseModel
@@ -27,7 +29,11 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
 class VideosRepository(private val database: VideosDatabase) {
-    private val _video = MutableLiveData<List<Video>>()
+
+    private val _video : LiveData<List<Video>> = database.videoDao.getVideos().map {
+        it.asDomainModel()
+    }
+
     val video: LiveData<List<Video>>
         get() = _video
 
